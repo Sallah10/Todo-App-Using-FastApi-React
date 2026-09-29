@@ -13,6 +13,9 @@ venv/
 .env.*
 !.env.example
 
+# Local-only deployment notes
+/DEPLOYMENT.md
+
 # Node
 node_modules/
 dist/

@@ -1,41 +1,35 @@
 # Todo App
 
-Two parts, run separately. Backend first.
+A full-stack todo application with a React frontend and a FastAPI backend. The API stores todo items in SQLite for local development and can use Neon PostgreSQL in production.
 
-- `backend/` — FastAPI + SQLAlchemy + SQLite
-- `frontend/` — React (Vite)
+## Technology
 
-## Run the backend
+- Frontend: React and Vite
+- Backend: FastAPI and SQLAlchemy
+- Local database: SQLite
+- Production database: Neon PostgreSQL
 
-```bash
+## Run locally
+
+Start the backend in one terminal:
+
+```powershell
 cd backend
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt   # Windows
-.venv/Scripts/python.exe -m uvicorn main:app --reload --port 8000
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m uvicorn main:app --reload --port 8000
 ```
 
-Interactive API docs: <http://127.0.0.1:8000/docs>
+Start the frontend in another terminal:
 
-Optional config — copy `backend/.env.example` to `backend/.env`
-(`DATABASE_URL`, `CORS_ORIGINS`).
-
-## Run the frontend
-
-```bash
+```powershell
 cd frontend
 npm install
 npm run dev
 ```
 
-App: <http://127.0.0.1:5173>
+Open <http://127.0.0.1:5173>. The API documentation is at <http://127.0.0.1:8000/docs>.
 
-Optional config — copy `frontend/.env.example` to `frontend/.env`
-(`VITE_API_URL`, defaults to `http://127.0.0.1:8000`). Restart `npm run dev`
-after changing it; Vite only reads env vars at startup.
+## Documentation
 
-## Tests and checks
-
-```bash
-cd backend  && .venv/Scripts/python.exe test_api.py   # endpoint + CORS checks
-cd frontend && npm run lint && npm run build
-```
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the step-by-step production deployment guide using Neon, Render, and Vercel. The deployment guide is intentionally excluded from Git and is available only in this local workspace.
